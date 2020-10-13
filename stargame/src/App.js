@@ -2,60 +2,9 @@ import React,{useState, useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import StarsDisplay from './components/StarsDisplay'
-// STAR MATCH - V9
+import PlayNumber from './components/PlayNumber';
+import PlayAgain from './components/PlayAgain';
 
-
-
-const PlayNumber = props => (
-  <button
-    className="number"
-    style={{backgroundColor: colors[props.status]}}
-    onClick={() => props.onClick(props.number, props.status)}
-    >
-    {props.number}
-  </button>
-);
-
-const PlayAgain = props => (
-	<div className="game-done">
-  	<div 
-    	className="message"
-      style={{ color: props.gameStatus === 'lost' ? 'red' : 'green'}}
-    >
-  	  {props.gameStatus === 'lost' ? 'Game Over' : 'Nice'}
-  	</div>
-	  <button onClick={props.onClick}>Play Again</button>
-	</div>
-);
-
-const useGameState = timeLimit => {
-  const [stars, setStars] = useState(utils.random(1, 9));
-  const [availableNums, setAvailableNums] = useState(utils.range(1, 9));
-  const [candidateNums, setCandidateNums] = useState([]);
-  const [secondsLeft, setSecondsLeft] = useState(10);
-
-  useEffect(() => {
-    if (secondsLeft > 0 && availableNums.length > 0) {
-      const timerId = setTimeout(() => setSecondsLeft(secondsLeft - 1), 1000);
-      return () => clearTimeout(timerId);
-    }
-  });
-
-  const setGameState = (newCandidateNums) => {
-    if (utils.sum(newCandidateNums) !== stars) {
-			setCandidateNums(newCandidateNums);
-    } else {
-      const newAvailableNums = availableNums.filter(
-        n => !newCandidateNums.includes(n)
-      );
-      setStars(utils.randomSumIn(newAvailableNums, 9));
-      setAvailableNums(newAvailableNums);
-      setCandidateNums([]);
-    }
-  };
-
-  return { stars, availableNums, candidateNums, secondsLeft, setGameState };
-};
 
 const Game = props => {
   const {
