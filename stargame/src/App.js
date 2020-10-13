@@ -19,8 +19,5 @@ const StarMatch = () => {
 
 
 
-export default function App() {
-  return (
-    <StarMatch />
-  )
-}
+export default StarMatch;
+ 
