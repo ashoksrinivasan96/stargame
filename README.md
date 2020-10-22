@@ -1,5 +1,5 @@
 # stargame
-A Star selection game using Reactjs concepts such as State, Side Effects, Custom Hooks and Mounting and Unmounting components using key attribute
+A Star Selection game using Reactjs concepts such as State, Side Effects, Custom Hooks and Mounting and Unmounting components using key attribute
 
 ## Steps to Install Stargame
 * Git clone
